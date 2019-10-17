@@ -1,22 +1,44 @@
 .App {
-  text-align: center;
+  font-family: sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.item {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 1px 1px 7px black;
+  background-color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+img {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.meta {
+  padding: 0 10px;
+}
+
+.top-level {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-items: center;
 }

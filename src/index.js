@@ -1,12 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { useRoutes, A } from "hookrouter";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Cart from "./cart";
+import Home from "./Home";
+import productsReducer from "./store/reducers/products";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import "./App.css";
+
+const rootReducer = combineReducers({
+  products: productsReducer
+});
+
+const store = createStore(rootReducer);
+
+const routes = {
+  "/": () => <Home />,
+  "/cart": () => <Cart />
+};
+
+function App() {
+  return (
+    <div className="App">
+      <A href="/">Home</A>
+      <A href="/cart">Cart</A>
+      {useRoutes(routes)}
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
